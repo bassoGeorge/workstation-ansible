@@ -1,0 +1,7 @@
+---
+
+# Having a running python 2 is necessary for all ansible tasks.
+# This one checks if that is so and installs python 2 if necessary
+- name: Install python 2 if needed
+  become: true
+  raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal python-simplejson)

@@ -1,0 +1,6 @@
+---
+  - name: Get system up and running
+    hosts: all
+    remote_user: ubuntu
+    roles:
+      - basics
