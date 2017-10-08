@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu-replica"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
+    # vb.gui = true
 
     # Customize the amount of memory on the VM:
     vb.memory = "3072"
@@ -67,4 +67,11 @@ Vagrant.configure("2") do |config|
   #   apt-get update
   #   apt-get install -y apache2
   # SHELL
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "system.yml"
+    ansible.tags = ENV['TAGS'] || "all"
+    ansible.verbose = false
+  end
+
+  config.ssh.forward_agent = true
 end
