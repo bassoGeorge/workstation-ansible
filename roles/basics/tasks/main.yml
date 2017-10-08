@@ -5,3 +5,8 @@
 - name: Install python 2 if needed
   become: true
   raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal python-simplejson)
+
+- name: Install pip
+  become: true
+  apt:
+    name: python-pip

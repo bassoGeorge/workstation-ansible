@@ -1,6 +1,13 @@
 ---
   - name: Get system up and running
     hosts: all
-    remote_user: ubuntu
+    remote_user: vagrant
     roles:
       - basics
+
+
+  - name: Install development environment
+    hosts: all
+    remote_user: vagrant
+    roles:
+      - i3wm

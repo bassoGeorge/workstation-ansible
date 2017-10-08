@@ -1,0 +1,15 @@
+---
+# Here we will set up the i3 desktop environment
+
+- name: Install required apt packages for i3
+  become: true
+  apt:
+    name: "{{ item }}"
+  with_items: "{{ apt_packages }}"
+
+
+- name: Install required pip packages for i3
+  become: true
+  pip:
+    name: "{{ item }}"
+  with_items: "{{ pip_packages }}"

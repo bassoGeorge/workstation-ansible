@@ -1,0 +1,9 @@
+---
+apt_packages:
+  - i3
+  - feh
+  - scrot
+  - imagemagick
+
+pip_packages:
+  - py3status
